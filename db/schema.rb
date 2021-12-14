@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2021_12_13_180946) do
     t.decimal "last_price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
   end
 
   create_table "users", force: :cascade do |t|
