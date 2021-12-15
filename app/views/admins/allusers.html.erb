@@ -1,0 +1,6 @@
++<%@users.each do |user| %>
+fullname <%=user.full_name%><br/>
+email <%=user.email%><br/>
+status <%=user.status%> <br/>
+<%=link_to "Edit", edit_user_registration_path(user.id)%>
+<%end%>
