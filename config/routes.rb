@@ -1,8 +1,8 @@
 Rails.application.routes.draw do   
-  devise_for :admins
-  devise_for :users , views: { registrations: "users/registrations" }
+  devise_for :admins, only: [:sessions]
+  devise_for :users
   root "welcome#index"
-  get 'unapproved' => 'welcome#unapproved'  
+  get 'unapproved' => 'unverified#index'  
   get 'admin' => 'admin#index'
   get 'admin/edit/:id' => 'admin#edituser'
   patch 'admin.:id' => 'admin#updateuser'
@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   post 'admin/newuser' => 'admin#createuser'
   get 'admin/show/:id' => 'admin#showuser'
   patch 'admin/approve/:id' => 'admin#approveuser'
+  get 'stockapp' => 'stock_app#index'
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

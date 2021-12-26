@@ -42,6 +42,7 @@ class AdminController < ApplicationController
     @user = User.find(params[:id])
     @user.status = 'approved'    
     @user.save
+    redirect_to '/admin'
   end
 
   private

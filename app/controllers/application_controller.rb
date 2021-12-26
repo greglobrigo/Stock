@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
     elsif current_user.status == "pending"
       unapproved_path
     else
-      root_path
+      stockapp_path
     end
   end
 
