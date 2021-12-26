@@ -1,12 +1,6 @@
 <h1>Welcome#index</h1>
 <p>Find me in app/views/welcome/index.html.erb</p>
 
-<%if user_signed_in? || admin_signed_in? %>
-<%else%>
-<%= link_to "Log in", user_session_path %>
-<%= link_to "Sign up", new_user_registration_path %>
-<%end%>
-<%if admin_signed_in? %>
-<%= link_to "Add user", new_user_registration_path %>
-<%end%>
+
+
 
