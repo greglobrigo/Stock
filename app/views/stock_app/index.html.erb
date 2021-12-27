@@ -1,1 +1,10 @@
 <h1>Welcome to the stock app</h1>
+<%=link_to 'profile', stockapp_profile_path%>
+<%@markets.map do |stock|%>
+<div>
+<p><%=stock.name%>   <%=stock.ticker%> </p>
+<p><%=price = Market.new_lookup(stock.ticker)%></p>
+<%=link_to "Buy", "stockapp/buy/#{current_user.id}/#{stock.name}/#{stock.ticker}/#{price}"%>
+
+<div>
+<%end%>

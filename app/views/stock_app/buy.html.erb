@@ -1,0 +1,8 @@
+<h1>buy stock</h1>  
+<form action='/stockapp/buy/<%= @user_id %>/<%= @stock_name %>/<%= @stock_ticker %>/<%= @stock_price %>' method='post'>
+    <label for="quantity">Quantity:</label>
+    <input type="number" min="0" name="quantity" id="quantity">
+    <input type="submit" value="Buy">
+</form>
+<%= link_to "Back", :back %>
+
