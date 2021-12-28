@@ -8,6 +8,7 @@
 
     <%= stylesheet_link_tag "application", media: "all", 'data-turbolinks-track': "reload" %>
     <%= javascript_pack_tag "application", 'data-turbolinks-track': "reload" %>
+    <%= stylesheet_pack_tag "application", media: "all", 'data-turbolinks-track': "reload" %>
   </head>
 
   <body>
@@ -18,24 +19,21 @@
       <p class="alert alert-danger"><%= alert %></p>
     <% end %>
     
-  <%if user_signed_in? %>
-    <p>Signed in as <%= current_user.email %></p>
-    <%= link_to 'sign out', destroy_user_session_path, method: :delete %>
-    <%#remove if admin signed in%>
-  <% elsif user_signed_in? == false && admin_signed_in? == false%>
-    <%= link_to 'sign in', new_user_session_path %>
-  <% end %>
-     
-  <%if admin_signed_in? %>
-    <p>Signed in as <%= current_admin.email %></p>
-    <%= link_to 'sign out', destroy_admin_session_path, method: :delete %>
-  <% elsif user_signed_in? == false && admin_signed_in? == false%>
-    <%= link_to 'admin sign in', new_admin_session_path %>
-  <% end %>
+    <%if user_signed_in? %>
+      <p>Signed in as <%= current_user.email %></p>
+      <%= link_to 'sign out', destroy_user_session_path, method: :delete %>
+      <%#remove if admin signed in%>
+    <% elsif user_signed_in? == false && admin_signed_in? == false%>
+      <%= link_to 'sign in', new_user_session_path %>
+    <% end %>
+      
+    <%if admin_signed_in? %>
+      <p>Signed in as <%= current_admin.email %></p>
+      <%= link_to 'sign out', destroy_admin_session_path, method: :delete %>
+    <% elsif user_signed_in? == false && admin_signed_in? == false%>
+      <%= link_to 'admin sign in', new_admin_session_path %>
+    <% end %>
 
-  
-
-       
     <%= yield %>
   </body>
 </html>

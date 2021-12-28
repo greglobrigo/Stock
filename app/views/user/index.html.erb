@@ -1,0 +1,19 @@
+<h1>Welcome to the admin dahsboard</h1>
+<%=link_to "New User", admin_newuser_path %>
+<br/><br/><br/><br/><br/><br/>
+All Users: <br>
+<%@users.each do |user| %>
+full name: <%=user.full_name%> <br/>
+email: <%= user.email %> <br/>
+status: <%= user.status %><br/>
+<%=link_to "Edit", "/admin/edit/#{user.id}"%>
+<%=link_to "Show", "/admin/show/#{user.id}"%>
+<br><br>
+<% end %>
+<br><br><br>
+Pending:<br>
+<%@pending_users.each do |p_user| %>
+<%= p_user.email %>
+<%=link_to "Approve", "/admin/approve/#{p_user.id}", method: "patch", data: { confirm: "Are you sure you want to approve this user?" } %>
+<br>
+<% end %>
