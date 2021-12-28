@@ -13,67 +13,53 @@
   <body>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">Navbar</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+      <div class="container">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Dropdown
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-          </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <%= link_to 'Home', root_path, class: "nav-link"%>
+            </li>
+            <%if user_signed_in? %>
+                <li class="nav-item">
+                  <a class="nav-link">Signed in as <%= current_user.email %></a>
+                </li>
+                <li class="nav-item">
+                    <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: "nav-link" %>
+                </li>
+                  <%#remove if admin signed in%>
+                <% elsif user_signed_in? == false && admin_signed_in? == false%>
+                <li class="nav-item">
+                  <%= link_to 'Sign in', new_user_session_path, class: "nav-link" %>
+                </li>
+            <% end %>
+
+            <%if admin_signed_in? %>
+              <li class="nav-item">
+                  <a class="nav-link">Signed in as <%= current_admin.email %></a>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'Sign out', destroy_admin_session_path, method: :delete, class: "nav-link" %>
+              </li>
+              <% elsif user_signed_in? == false && admin_signed_in? == false%>
+              <li class="nav-item">
+                <%= link_to 'Admin Sign in', new_admin_session_path, class: "nav-link"%>
+              </li>
+            <% end %>
+          </ul>
+        </div>
       </div>
     </nav>
 
 
-   <% if notice %>
-      <p class="alert alert-success"><%= notice %></p>
-    <% end %>
-    <% if alert %>
-      <p class="alert alert-danger"><%= alert %></p>
-    <% end %>
-    
-  <%if user_signed_in? %>
-    <p>Signed in as <%= current_user.email %></p>
-    <%= link_to 'sign out', destroy_user_session_path, method: :delete %>
-    <%#remove if admin signed in%>
-  <% elsif user_signed_in? == false && admin_signed_in? == false%>
-    <%= link_to 'sign in', new_user_session_path %>
-  <% end %>
-     
-  <%if admin_signed_in? %>
-    <p>Signed in as <%= current_admin.email %></p>
-    <%= link_to 'sign out', destroy_admin_session_path, method: :delete %>
-  <% elsif user_signed_in? == false && admin_signed_in? == false%>
-    <%= link_to 'admin sign in', new_admin_session_path %>
-  <% end %>
+  <div class="container">
+      <%= render 'layouts/messages' %>
 
-  
-
-       
-    <%= yield %>
+      <%= yield %>
+    </div>
   </body>
 </html>

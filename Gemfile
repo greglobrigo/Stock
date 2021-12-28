@@ -25,6 +25,7 @@ gem 'devise'
 gem 'factory_bot_rails'
 gem 'faker'
 gem 'iex-ruby-client'
+gem 'devise-bootstrap-views', '~> 1.0'
 
 
 # Use Active Storage variant
