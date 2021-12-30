@@ -35,6 +35,4 @@ class StockAppController < ApplicationController
     def stock_params    
         params.permit(:user_id, :name, :ticker, :last_price, :quantity)
     end
-
-
 end
