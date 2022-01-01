@@ -1,3 +1,105 @@
 // Place all the styles related to the stock_app controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+.table {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.btn.btn-primary.btn-client.buy-btn {
+    background: green !important;
+    color: #fff !important;
+    width: 100%;
+}
+
+button.btn.btn-primary.btn-client.buy-btn > a {
+    color: #fff;
+}
+
+ul.nav.nav-tabs {
+    display: flex;
+    justify-content: space-between;
+    @media (min-width: 768px) {
+        justify-content: unset;
+    }
+}
+
+.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+td, td > button > a {
+    font-size: 0.8rem;
+}
+
+.balance-container {
+    margin-left: auto;
+    text-align: right;
+    
+}
+
+.balance-amount {
+    font-weight: bold;
+    text-shadow: 2px 2px 8px #000;
+}
+
+.content-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+    text-shadow: 2px 2px 8px #000;
+}
+
+.back-btn {
+    color: #fff;
+}
+
+button.btn.btn-primary.btn-client.back-main-btn {
+    padding: 0.3rem;
+}
+
+.back-btn:hover {
+    text-decoration: none;
+    color: inherit
+}
+
+.buy-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    padding: 1rem;
+}
+
+.buy-form-container {}
+
+form {
+    text-align: center;
+}
+
+.stock-value {
+    display: flex;
+    font-weight: bold;
+}
+
+.purchase-btn {
+    margin-top: 2rem;
+}
+
+.quantity-input-field {
+    background: transparent;   
+    color: #fff;
+    text-align: center; 
+    font-weight: bold;
+    font-size: 1.75rem;
+    width: 10rem;
+}
+
+.edit-cash-btn-container {
+    display: flex;
+    gap: 0.5rem;
+}

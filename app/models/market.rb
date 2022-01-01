@@ -23,5 +23,13 @@ class Market < ApplicationRecord
     )
     client.stock_market_list(:gainers)
   end
+  def self.get_losers
+    client = IEX::Api::Client.new(
+      publishable_token: Rails.application.credentials.iex_client[:publishable_token],
+      secret_token: Rails.application.credentials.iex_client[:secret_token],
+      endpoint: Rails.application.credentials.iex_client[:endpoint],
+    )
+    client.stock_market_list(:losers)
+  end
 
 end

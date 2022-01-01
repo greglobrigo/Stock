@@ -46,10 +46,12 @@ class StockAppController < ApplicationController
   def index
     @markets = Market.get_most_active  
     @gainers = Market.get_gainers
+    @losers = Market.get_losers
   end
 
   def profile
     @stocks = current_user.stocks
+    # @user = User.find(params[:id])
   end
 
   def buy

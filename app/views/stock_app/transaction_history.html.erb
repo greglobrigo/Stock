@@ -1,14 +1,20 @@
-<h1>Transaction History</h1>
-<%=link_to "Back to Stock App", stock_app_index_path%><br>
-<%=link_to "Profile", profile_stock_app_index_path%>
+<div class="content-header">
+    <h1>Transaction History</h1>
+    <button type="button" class="btn btn-primary btn-client back-main-btn">
+        <%=link_to "Back to Stock", stock_app_index_path, class: "back-btn"%>
+    </button>
+</div>
 <%@stocks.each do |stock| %>
-<div>
-Name: <%=stock.name%><br>
-Ticker: <%=stock.ticker%><br>
-Transaction: <%=stock.transaction_type%><br>
-Price: <%=stock.last_price%><br>
-Quantity: <%=stock.quantity%><br>
-Date: <%=stock.created_at.time.strftime("%m/%d/%Y")%><br>
-</div><br>
+<div class="col-md-3 pb-4">
+    <div class="card item-card card-block">
+    <div class="card-body">
+        <h4 class="card-main-amount mb-3"><%=stock.name%> • <%=stock.ticker%></h4>
+        <h5 class="card-title item-card-title mt-1 mb-1">Transaction:<%=stock.transaction_type%></h5>
+        <h5 class="card-title item-card-title mt-1 mb-1">Price: <%=stock.last_price%></h5>
+        <h5 class="card-title item-card-title mt-1 mb-1">Quantity: <%=stock.quantity%></h5>
+        <h6 class="card-text">Date: <%=stock.created_at.time.strftime("%m/%d/%Y")%><br></h6>
+    </div>
+    </div>
+</div>
 <%end%>
 

@@ -1,19 +1,59 @@
-<h1>Welcome to the admin dahsboard</h1>
-<%=link_to "New User", admin_newuser_path %>
-<br/><br/><br/><br/><br/><br/>
-All Users: <br>
-<%@users.each do |user| %>
-full name: <%=user.full_name%> <br/>
-email: <%= user.email %> <br/>
-status: <%= user.status %><br/>
-<%=link_to "Edit", "/admin/edit/#{user.id}"%>
-<%=link_to "Show", "/admin/show/#{user.id}"%>
-<br><br>
-<% end %>
-<br><br><br>
-Pending:<br>
-<%@pending_users.each do |p_user| %>
-<%= p_user.email %>
-<%=link_to "Approve", "/admin/approve/#{p_user.id}", method: "patch", data: { confirm: "Are you sure you want to approve this user?" } %>
-<br>
-<% end %>
+
+    <div class="content-header">
+        <h1>Dashboard</h1>
+    </div>
+
+
+<ul class="nav nav-tabs admin-user-accounts-tab" role="tablist">
+	<li class="nav-item">
+		<a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">All Users</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab">Pending</a>
+	</li>
+</ul>
+<div class="tab-content dashboard-table">
+	<div class="tab-pane active" id="tabs-1" role="tabpanel">
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                <th scope="col">Fullname</th>
+                <th scope="col">Email</th>
+                <th scope="col">Status</th>
+                <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%@users.each do |user| %>
+                    <tr>
+                        <td><%=user.full_name%></td>
+                        <td><%= user.email %> </td>
+                        <td><%= user.status %></td>
+                        <td class="edit-show-container">
+                            <%=link_to "Edit", "/admin/edit/#{user.id}", class: "btn btn-primary btn-client admin-dashboard-btn"%>
+                            <%=link_to "Show", "/admin/show/#{user.id}", class: "btn btn-primary btn-client admin-dashboard-btn"%>
+                        </td>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+    <div class="tab-pane" id="tabs-2" role="tabpanel">
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                <th scope="col">Email</th>
+                <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%@pending_users.each do |p_user| %>
+                    <tr>
+                        <td><%= p_user.email %> </td>
+                        <td><%=link_to "Approve", "/admin/approve/#{p_user.id}", method: "patch", data: { confirm: "Are you sure you want to approve this user?" }, class: "btn btn-primary btn-client admin-dashboard-btn" %></td>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+</div>

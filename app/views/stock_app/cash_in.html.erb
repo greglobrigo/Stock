@@ -1,11 +1,23 @@
-<h1>Cash In</h1> 
-<%=current_user.balance%><br>
-<%= form_with url: transact_cash_in_stock_app_index_path, method: :post do |form| %>
-  <%= form.label :cash_in_amount, "Amount" %>    
-  <%= form.number_field :cash_in_amount, min: 1, value: 1 %>  
-  <%=form.hidden_field :user_id, value: current_user.id %>
-  <%= form.submit "Cash In" %>
-<% end %>
-
-<%= link_to "Back", stock_app_index_path %>
+<div class="content-header">
+    <h2>Cash In</h2>
+    <button type="button" class="btn btn-primary btn-client back-main-btn">
+        <%=link_to "Back", :back, class: "back-btn"%>
+    </button>
+</div>
+<div class="balance-container">
+    Balance: 
+    <h3 class="balance-amount">
+        $<%=current_user.balance%>
+    </h3>
+</div>
+<div class="buy-form">
+  <%= form_with url: transact_cash_in_stock_app_index_path, method: :post do |form| %>
+    <%= form.label :cash_in_amount, "Amount" %>    
+    <br />
+    <%= form.number_field :cash_in_amount, min: 1, value: 1, class: 'quantity-input-field' %>  
+    <br />
+    <%=form.hidden_field :user_id, value: current_user.id %>
+    <%= form.submit "Cash In", class: 'btn btn-primary btn-client back-main-btn purchase-btn' %>
+  <% end %>
+</div>
 
