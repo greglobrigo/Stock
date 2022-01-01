@@ -6,9 +6,9 @@ class ApplicationController < ActionController::Base
     if current_admin
       admin_path
     elsif current_user.status == "pending"
-      unapproved_path
+      unverified_index_path	
     else
-      stockapp_path
+      stock_app_index_path	
     end
   end
 

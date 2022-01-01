@@ -1,8 +1,12 @@
-<h1>buy stock</h1>  
-<form action='/stockapp/buy/<%= @user_id %>/<%= @stock_name %>/<%= @stock_ticker %>/<%= @stock_price %>' method='post'>
-    <label for="quantity">Quantity:</label>
-    <input type="number" min="0" name="quantity" id="quantity">
-    <input type="submit" value="Buy">
-</form>
-<%= link_to "Back", :back %>
+<h1>buy stock</h1> 
+<%=current_user.balance%><br>
+Stock Name: <%=@stock_name%><br>
+Stock Price: <%=@stock_price%><br>
+<%= form_with url: purchase_path(@user_id, @stock_name, @stock_ticker, @stock_price, @stock_quantity, @transaction_type), method: :post do |form| %>
+  <%= form.label :quantity, "Quantity" %>
+  <%= form.number_field :quantity, onkeydown: "return false", min: 1, value: 1 %>  
+  <%= form.hidden_field :transaction_type, value: "Buy" %>
+  <%= form.submit "Purchase" %>
+<% end %>
+<%= link_to "Back", stock_app_index_path %>
 

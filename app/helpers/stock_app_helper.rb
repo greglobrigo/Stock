@@ -1,2 +1,2 @@
-module StockAppHelper
+module StockAppHelper    
 end
