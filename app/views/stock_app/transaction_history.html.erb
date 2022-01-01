@@ -1,0 +1,14 @@
+<h1>Transaction History</h1>
+<%=link_to "Back to Stock App", stock_app_index_path%><br>
+<%=link_to "Profile", profile_stock_app_index_path%>
+<%@stocks.each do |stock| %>
+<div>
+Name: <%=stock.name%><br>
+Ticker: <%=stock.ticker%><br>
+Transaction: <%=stock.transaction_type%><br>
+Price: <%=stock.last_price%><br>
+Quantity: <%=stock.quantity%><br>
+Date: <%=stock.created_at.time.strftime("%m/%d/%Y")%><br>
+</div><br>
+<%end%>
+

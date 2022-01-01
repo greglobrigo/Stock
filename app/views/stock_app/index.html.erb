@@ -1,10 +1,30 @@
 <h1>Welcome to the stock app</h1>
-<%=link_to 'profile', stockapp_profile_path%>
-<%@markets.map do |stock|%>
+<%=link_to 'profile', profile_stock_app_index_path%> <br>
+<%=link_to 'transaction history', transaction_history_stock_app_index_path%><br>
+<br>
+Balance: <%=current_user.balance%>
+<br>
+<br>
+Most Active
+<%@markets.each do |market|%>
 <div>
-<p><%=stock.name%>   <%=stock.ticker%> </p>
-<p><%=price = Market.new_lookup(stock.ticker)%></p>
-<%=link_to "Buy", "stockapp/buy/#{current_user.id}/#{stock.name}/#{stock.ticker}/#{price}"%>
-
-<div>
+<%=market.company_name%><br>
+<%=market.symbol%><br>
+price: <%=market.latest_price%>
+<%=link_to 'buy', buy_path(current_user.id, market.company_name.to_s.gsub(".", ""), market.symbol, market.latest_price)%>
+<br>
+</div>
+<br>
 <%end%>
+
+<%@gainers.each do |market|%>
+<div>
+<%=market.company_name%><br>
+<%=market.symbol%><br>
+price: <%=market.latest_price%>
+<%=link_to 'buy', buy_path(current_user.id, market.company_name.to_s.gsub(".", ""), market.symbol, market.latest_price)%>
+<br>
+</div>
+<br>
+<%end%>
+
