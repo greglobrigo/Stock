@@ -3,6 +3,40 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 
+.welcome-container {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  justify-content: center;
+  align-items: center;
+  @media (min-width: 768px) {
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+  }
+}
+
+.title-header-container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  @media (min-width: 768px) {
+    text-align: unset;
+  }
+}
+
+.welcome-text {
+  font-family: 'Open Sans', sans-serif;
+  color: #fff;
+  font-weight: bold;
+}
+
+.welcome-text.welcome-subtext {
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-weight: normal;
+  color: #b7bdc6;
+}
+
 div#dropdownMenuButton {
     border-radius: 100%;
 }
@@ -52,6 +86,8 @@ a.nav-link.nav-menu:hover {
   background: rgba(255, 255, 255, 0.2);
   border: unset;
   border-radius: 10px;
+  padding: 0.5rem;
+  min-width: 10rem;
 }
 
 .card-body > p {
@@ -73,12 +109,33 @@ a.nav-link.nav-menu:hover {
   color: rgb(30, 255, 150);
   text-shadow: 2px 2px 4px #000000;
   font-weight: bold;
+  margin-bottom: 0rem !important;
 }
 
 .btn-primary {
   background-color:rgb(30, 255, 150) !important;
   border-color: unset !important;
   color: #000000
+}
+
+.image-preview {
+  width: 65%;
+  @media (min-width: 768px) {
+    width: 40%;
+  }
+}
+
+.market-list {
+  display: flex;
+  overflow-x: scroll;
+}
+.market-list::-webkit-scrollbar {
+  display: none;
+}
+/* Hide scrollbar for IE, Edge add Firefox */
+.market-list {
+  -ms-overflow-style: none;
+  scrollbar-width: none; /* Firefox */
 }
 
 
@@ -96,6 +153,7 @@ a.nav-link.nav-menu:hover {
     font-size:15px;
     transition:1s;
     cursor:pointer;
+    margin-top: 0 !important;
   }
   .item-card-title i{  
     font-size:15px;

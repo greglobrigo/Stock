@@ -1,16 +1,17 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+<div class="welcome-container">
+  <div class="title-header-container">
+    <h1 class="welcome-text">Buy & sell stocks in minutes</h1>
+    <h5 class="welcome-text welcome-subtext">Join the largest stocks exchange</h5>
+  </div>
+  <%= image_tag("general/dark-analytics-bro.png", class: "image-preview") %>
+</div>
 
-<img src=<%= image_tag("/general/dark_analytics.gif") %> />
-
-<%= image_tag '/assets/images/general/dark_analytics.gif', alt: 'icon' %>
-
-<div class="row">
+<div class="market-list">
  <%@markets.map do |stock|%>
   <div class="col-md-3 pb-4">
     <div class="card item-card card-block">
       <div class="card-body">
-        <h5 class="card-title item-card-title mt-3 mb-3"><%=stock.name%> • <%=stock.ticker%></h5>
+        <h5 class="card-title item-card-title mt-1 mb-1"><%=stock.name%> • <%=stock.ticker%></h5>
         <h3 class="card-main-amount"><%=price = Market.new_lookup(stock.ticker).round(1)%></h3>
         <p class="card-text">$<%=price = Market.new_lookup(stock.ticker)%></p>
       </div>

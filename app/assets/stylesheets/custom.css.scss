@@ -6,8 +6,31 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
+    height: 100vh;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .bg-light {
     background-color: transparent !important;
 } 
+
+.content-container {
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 4rem);
+}
+
+button.navbar-toggler {
+    background-color: #1eff96;
+}
+
+.admin-user-btn-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    @media (min-width: 768px) {
+        flex-direction: unset;
+        margin-left: auto;
+    }
+}
