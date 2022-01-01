@@ -1,7 +1,12 @@
-<br/>
-<br/>
-full name:<%=@user.full_name %>
-<br/>
-<br/>
-email:<%=@user.email %>
-<%=link_to "back", admin_path %>
+<div class="show-user-container">
+    Name<br/> 
+    <h3 class="stock-value show-user-value"><%=@user.full_name %></h3>
+    <br/>
+    <br/>
+    Email <br/>
+    <h3 class="stock-value show-user-value"><%=@user.email %></h3>
+    <br/>
+    <button type="button" class="btn btn-primary btn-client back-main-btn back-btn-edit-show">
+        <%=link_to "back", admin_path, class: "back-btn" %>
+    </button>
+</div>

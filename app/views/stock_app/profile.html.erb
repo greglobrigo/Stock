@@ -1,9 +1,19 @@
-<h1>Your Profile</h1>
-Balance: <%= current_user.balance %><br>
-<%= link_to "Edit Profile", edit_user_registration_path %><br>
-<%= link_to "Cash_in", cash_in_stock_app_index_path %><br>
-<%= link_to "Back to Stock App", stock_app_index_path %><br>
-<%= link_to "transaction history", transaction_history_stock_app_index_path %><br><br>
+<div class="content-header">
+    <h1>Profile</h1>
+    <button type="button" class="btn btn-primary btn-client back-main-btn">
+        <%=link_to "Back to Stock", stock_app_index_path, class: "back-btn"%>
+    </button>
+</div>
+<div class="balance-container">
+    Balance: 
+    <h3 class="balance-amount">
+        $<%=current_user.balance%>
+    </h3>
+</div>  
+<div class="edit-cash-btn-container">
+    <%= link_to "Edit Profile", edit_user_registration_path, class: 'btn btn-primary btn-client back-main-btn' %>
+    <%= link_to "Cash In", cash_in_stock_app_index_path, class: 'btn btn-primary btn-client back-main-btn' %><br>
+</div>
 <% current_user.stocks.distinct.pluck(:name, :ticker).each do |stock| %>
 <% if current_user.stocks.where(name: stock[0]).last.total_owned > 0 %>
 <div>

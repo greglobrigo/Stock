@@ -1,12 +1,26 @@
-<h1>buy stock</h1> 
-<%=current_user.balance%><br>
-Stock Name: <%=@stock_name%><br>
-Stock Price: <%=@stock_price%><br>
+<div class="content-header">
+    <h1>Buy Stock</h1>
+    <button type="button" class="btn btn-primary btn-client back-main-btn">
+        <%=link_to "Back to Stock", stock_app_index_path, class: "back-btn"%>
+    </button>
+</div>
+<div class="balance-container">
+    Balance: 
+    <h3 class="balance-amount">
+        $<%=current_user.balance%>
+    </h3>
+</div>  
+
+<div class="buy-form">
+Name <h3 class="stock-value"><%=@stock_name%></h3>
+Price <h3 class="stock-value"><%=@stock_price%></h3>
 <%= form_with url: purchase_path(@user_id, @stock_name, @stock_ticker, @stock_price, @stock_quantity, @transaction_type), method: :post do |form| %>
   <%= form.label :quantity, "Quantity" %>
-  <%= form.number_field :quantity, onkeydown: "return false", min: 1, value: 1 %>  
+  <br/>
+  <%= form.number_field :quantity, onkeydown: "return false", min: 1, value: 1, class: 'quantity-input-field' %> 
+  <br/> 
   <%= form.hidden_field :transaction_type, value: "Buy" %>
-  <%= form.submit "Purchase" %>
+  <%= form.submit "Purchase", class: 'btn btn-primary btn-client back-main-btn purchase-btn' %>
 <% end %>
-<%= link_to "Back", stock_app_index_path %>
+</div>
 

@@ -1,30 +1,100 @@
-<h1>Welcome to the stock app</h1>
-<%=link_to 'profile', profile_stock_app_index_path%> <br>
-<%=link_to 'transaction history', transaction_history_stock_app_index_path%><br>
-<br>
-Balance: <%=current_user.balance%>
-<br>
-<br>
-Most Active
-<%@markets.each do |market|%>
-<div>
-<%=market.company_name%><br>
-<%=market.symbol%><br>
-price: <%=market.latest_price%>
-<%=link_to 'buy', buy_path(current_user.id, market.company_name.to_s.gsub(".", ""), market.symbol, market.latest_price)%>
-<br>
+<div class="content-header">
+    <h1>Stocks</h1>
 </div>
-<br>
-<%end%>
+<div class="balance-container">
+    Balance: 
+    <h3 class="balance-amount">
+        $<%=current_user.balance%>
+    </h3>
+</div>  
 
-<%@gainers.each do |market|%>
-<div>
-<%=market.company_name%><br>
-<%=market.symbol%><br>
-price: <%=market.latest_price%>
-<%=link_to 'buy', buy_path(current_user.id, market.company_name.to_s.gsub(".", ""), market.symbol, market.latest_price)%>
-<br>
+
+
+<ul class="nav nav-tabs" role="tablist">
+	<li class="nav-item">
+		<a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">Most Active</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab">Gainers</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab">Losers</a>
+	</li>
+</ul>
+<!-- Tab panes -->
+<div class="tab-content">
+	<div class="tab-pane active" id="tabs-1" role="tabpanel">
+		<table class="table table-dark">
+            <thead>
+                <tr>
+                <th scope="col">Company</th>
+                <th scope="col">Ticker</th>
+                <th scope="col">Price</th>
+                <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%@markets.each do |market|%>
+                    <tr>
+                    <td><%=market.company_name%></td>
+                    <td><%=market.symbol%></td>
+                    <td>$<%=market.latest_price%></td>
+                    <td>
+                        <%=link_to 'Buy', buy_path(current_user.id, market.company_name.to_s.gsub(".", ""), market.symbol, market.latest_price), class: "btn btn-primary btn-client buy-btn"%>
+                    </td>
+                    </tr>
+                <%end%>
+            </tbody>
+        </table>
+	</div>
+	<div class="tab-pane" id="tabs-2" role="tabpanel">
+		<table class="table table-dark">
+            <thead>
+                <tr>
+                <th scope="col">Company</th>
+                <th scope="col">Ticker</th>
+                <th scope="col">Price</th>
+                <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%@gainers.each do |market|%>
+                    <tr>
+                    <td><%=market.company_name%></td>
+                    <td><%=market.symbol%></td>
+                    <td>$<%=market.latest_price%></td>
+                    <td>
+                        <%=link_to 'Buy', buy_path(current_user.id, market.company_name.to_s.gsub(".", ""), market.symbol, market.latest_price), class: "btn btn-primary btn-client buy-btn"%>
+                    </td>
+                    </tr>
+                <%end%>
+            </tbody>
+        </table>
+	</div>
+	<div class="tab-pane" id="tabs-3" role="tabpanel">
+		<table class="table table-dark">
+            <thead>
+                <tr>
+                <th scope="col">Company</th>
+                <th scope="col">Ticker</th>
+                <th scope="col">Price</th>
+                <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%@losers.each do |market|%>
+                    <tr>
+                    <td><%=market.company_name%></td>
+                    <td><%=market.symbol%></td>
+                    <td>$<%=market.latest_price%></td>
+                    <td>
+                        <%=link_to 'Buy', buy_path(current_user.id, market.company_name.to_s.gsub(".", ""), market.symbol, market.latest_price), class: "btn btn-primary btn-client buy-btn"%>
+                    </td>
+                    </tr>
+                <%end%>
+            </tbody>
+        </table>
+	</div>
 </div>
-<br>
-<%end%>
+
 
