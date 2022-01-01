@@ -7,8 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 admin = Admin.create({email: 'admin@email.com', password: '123456', password_confirmation: '123456'})
-dummy1 = User.create({email: 'greg@email.com', password: '123456', password_confirmation: '123456', full_name: 'Greg Lobrigo', status: 'approved', balance: '100000.0'})
-dummy2 = User.create({email: 'bryan@email.com', password: '123456', password_confirmation: '123456', full_name: 'Bryan Lontoc', status: 'approved', balance: '100000.0'})
+dummy1 = User.create({email: 'greg@email.com', password: '123456', password_confirmation: '123456', full_name: 'Greg Lobrigo', status: 'approved', balance: '10000.0'})
+dummy2 = User.create({email: 'bryan@email.com', password: '123456', password_confirmation: '123456', full_name: 'Bryan Lontoc', status: 'approved', balance: '10000.0'})
 
 #Markets
 google = Market.create({ticker: 'GOOG', name: 'Google'})

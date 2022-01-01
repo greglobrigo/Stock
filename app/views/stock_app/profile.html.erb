@@ -1,0 +1,16 @@
+<h1>Your Profile</h1>
+Balance: <%= current_user.balance %><br>
+<%= link_to "Edit Profile", edit_user_registration_path %><br>
+<%= link_to "Cash_in", cash_in_stock_app_index_path %><br>
+<%= link_to "Back to Stock App", stock_app_index_path %><br>
+<%= link_to "transaction history", transaction_history_stock_app_index_path %><br><br>
+<% current_user.stocks.distinct.pluck(:name, :ticker).each do |stock| %>
+<% if current_user.stocks.where(name: stock[0]).last.total_owned > 0 %>
+<div>
+Stock Name:<%= stock[0] %> 
+Quantity Owned: <%= current_user.stocks.find_by(name: stock[0]).total_owned %>
+Total Current Value: <%= current_user.stocks.find_by(name: stock[0]).total_owned * Market.new_lookup(stock[1]) %>
+<%= link_to "Sell", sell_path(current_user.id, stock[0], stock[1], Market.new_lookup(stock[1])), method: :get %>
+</div>
+<% end %>
+<% end %>
