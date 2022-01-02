@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     collection do
       get "/profile" => "stock_app#profile", as: :profile
       get "/transaction_history" => "stock_app#transaction_history", as: :transaction_history
+      get "/portfolio" => "stock_app#portfolio", as: :portfolio
       get "/cash_in" => "stock_app#cash_in", as: :cash_in
       post "/cash_in/" => "stock_app#transact_cash_in", as: :transact_cash_in
     end

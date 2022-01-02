@@ -1,4 +1,9 @@
 <div class="log-in-container">
+<%if resource_name == :user %>
+<h2>User</h2>
+<% else %>
+<h2>Admin</h2>
+<% end %>
 <h2>Log in</h2>
 
 <div class="row">
@@ -30,5 +35,8 @@
   </div>
 </div> 
 
+<%if resource_name == :user %>
 <%= render "devise/shared/links" %>
+<% end %>
+
 <div>
