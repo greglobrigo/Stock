@@ -6,17 +6,19 @@
      </button>
     </div>
 </div>
+<div class="row">
 <% @stocks.each do |stock| %>
-<div class="col-md-3 pb-4">
-    <div class="card item-card card-block">
-    <div class="card-body">
-        <h4 class="card-main-amount mb-3"><%= stock.name %> • <%= stock.ticker %></h4>
-        <h5 class="card-title item-card-title mt-1 mb-1">Transaction type: <%= stock.transaction_type %></h5>
-        <h5 class="card-title item-card-title mt-1 mb-1">Price: <%= stock.last_price %></h5>
-        <h5 class="card-title item-card-title mt-1 mb-1">Quantity: <%= stock.quantity %></h5>
-        <h6 class="card-text">Date: <%= stock.created_at.time.strftime("%m/%d/%Y") %><br></h6>
+    <div class="col-md-3 pb-4">
+        <div class="card item-card card-block">
+        <div class="card-body">
+            <h4 class="card-main-amount mb-3"><%= stock.name %> • <%= stock.ticker %></h4>
+            <h5 class="card-title item-card-title mt-1 mb-1">Transaction type: <%= stock.transaction_type %></h5>
+            <h5 class="card-title item-card-title mt-1 mb-1">Price: <%= stock.last_price %></h5>
+            <h5 class="card-title item-card-title mt-1 mb-1">Quantity: <%= stock.quantity %></h5>
+            <h6 class="card-text">Date: <%= stock.created_at.time.strftime("%m/%d/%Y") %><br></h6>
+        </div>
+        </div>
     </div>
-    </div>
-</div>
 <% end %>
+</div>
 
