@@ -11,8 +11,8 @@
    <% current_user.stocks.distinct.pluck(:name, :ticker).each do |stock| %>
    <% if current_user.stocks.where(name: stock[0]).last.total_owned > 0 %>
    Stock Name: <h3 class="stock-value" style="text-align: center !important"><%= stock[0] %></h3> 
-   Quantity Owned: <h3 class="stock-value" style="text-align: center !important"><%= current_user.stocks.find_by(name: stock[0]).total_owned %></h3>
-   Total Current Value: <h3 class="stock-value" style="text-align: center !important"><%= current_user.stocks.find_by(name: stock[0]).total_owned * Market.new_lookup(stock[1]) %></h3>
+   Quantity Owned: <h3 class="stock-value" style="text-align: center !important"><%= Stock.where(user_id: current_user.id, name: stock[0]).last.total_owned %></h3>
+   Total Current Value: <h3 class="stock-value" style="text-align: center !important"><%= Stock.where(user_id: current_user.id, name: stock[0]).last.total_owned * Market.new_lookup(stock[1]) %></h3>
    <%= link_to "Sell", sell_path(current_user.id, stock[0], stock[1], Market.new_lookup(stock[1])), method: :get, class: 'btn btn-primary sell-btn' %>
    <% end %>
    <% end %>
