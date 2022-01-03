@@ -69,6 +69,7 @@
                 <%if admin_signed_in? || user_signed_in? %>
                   <div class="dropdown">
                     <div class="btn btn-secondary dropdown-toggle btn-profile" type="button" id="dropdownMenuButton" data-toggle="dropdown">                      
+                      <%= image_tag('general/default_prof.png', class: 'prof-pic')%>
                     </div>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
                       <%if admin_signed_in? %>

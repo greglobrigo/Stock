@@ -91,10 +91,24 @@ button.navbar-toggler {
 }
 
 .btn-profile {
-    display: none;
+    position: relative;
     @media (min-width: 992px) {
         display: block;
     }
+}
+
+div#dropdownMenuButton {
+    background: none;
+    border: none;
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+}
+
+.prof-pic {
+    width: 3rem;
+    height: 3rem;
 }
 
 .mobile-view-profile {
@@ -158,10 +172,29 @@ form#edit_user_1 {
 }
 
 button.btn.btn-primary.btn-client.back-main-btn {
-    width: 5rem;
-    margin: 0 auto;
+    width: auto;
+    margin-right:auto;
 }
 
 h3.stock-value.show-user-value {
+    margin: 0 auto;
+}
+
+a.btn.btn-primary.sign-up-n-forgot-pass {
+    background: #fff !important;
+    width: 15rem;
+}
+
+a.btn.btn-primary.sign-up-n-forgot-pass:hover {
+    background: #1eff96 !important;
+}
+
+a.btn.btn-primary.sell-btn {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+button.btn.btn-primary.btn-client.back-main-btn.back-btn-edit-show {
     margin: 0 auto;
 }
